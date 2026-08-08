@@ -19,6 +19,7 @@ const submitted = ref(false)
 const waHref = computed(() => buildWhatsAppUrl(buildContactInquiry(name.value, message.value)))
 
 function handleSubmit() {
+  if (!name.value.trim() || !message.value.trim()) return
   submitted.value = true
   window.open(waHref.value, '_blank', 'noopener')
 }

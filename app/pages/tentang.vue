@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BadgeCheck, HeartHandshake, Wallet } from '@lucide/vue'
+import { BadgeCheck, Check, HeartHandshake, Wallet } from '@lucide/vue'
 import { site } from '~/utils/site'
 
 useSeoMeta({
