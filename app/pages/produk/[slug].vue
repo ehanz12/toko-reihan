@@ -14,6 +14,13 @@ const relatedProducts = computed(() =>
   product.value ? related(product.value, 4) : [],
 )
 
+watch(
+  () => route.params.slug,
+  () => {
+    selectedSize.value = ''
+  },
+)
+
 const waHref = computed(() => {
   if (!product.value) return buildWhatsAppUrl()
   return buildWhatsAppUrl(

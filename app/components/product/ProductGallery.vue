@@ -13,8 +13,18 @@ watch(
 
 <template>
   <div class="space-y-3">
-    <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-sand-100">
-      <img :src="images[active]" :alt="alt" class="size-full object-cover" />
+    <div
+      id="product-image-panel"
+      role="tabpanel"
+      :aria-label="alt"
+      class="aspect-[4/5] overflow-hidden rounded-2xl bg-sand-100"
+    >
+      <img
+        :src="images[active]"
+        :alt="alt"
+        fetchpriority="high"
+        class="size-full object-cover"
+      />
     </div>
 
     <div
@@ -29,6 +39,7 @@ watch(
         type="button"
         role="tab"
         :aria-selected="active === index"
+        :aria-controls="'product-image-panel'"
         :aria-label="`Tampilkan gambar ${index + 1}`"
         :class="
           active === index
