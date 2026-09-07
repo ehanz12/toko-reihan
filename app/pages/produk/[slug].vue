@@ -51,7 +51,7 @@ if (!product.value) {
 </script>
 
 <template>
-  <template v-if="product">
+  <div v-if="product">
     <section class="bg-cream pt-24 lg:pt-32">
       <div class="container-x">
         <nav
@@ -165,5 +165,5 @@ if (!product.value) {
         </div>
       </div>
     </section>
-  </template>
+  </div>
 </template>

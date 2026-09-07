@@ -45,6 +45,11 @@ function onBreakpointChange(event: MediaQueryListEvent) {
   if (event.matches) close()
 }
 
+function isActive(to: string): boolean {
+  if (to === '/') return route.path === '/'
+  return route.path === to || route.path.startsWith(`${to}/`)
+}
+
 watch(open, (value) => {
   if (value) {
     lockScroll()
@@ -95,9 +100,9 @@ onBeforeUnmount(() => {
         <li v-for="link in navLinks" :key="link.to">
           <NuxtLink
             :to="link.to"
-            :class="route.path === link.to ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'"
+            :class="isActive(link.to) ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'"
             class="rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200"
-            :aria-current="route.path === link.to ? 'page' : undefined"
+            :aria-current="isActive(link.to) ? 'page' : undefined"
           >
             {{ link.label }}
           </NuxtLink>
@@ -150,7 +155,7 @@ onBeforeUnmount(() => {
             :key="link.to"
             :to="link.to"
             :class="
-              route.path === link.to
+              isActive(link.to)
                 ? 'bg-sand-100 text-ink-900'
                 : 'text-ink-600'
             "
